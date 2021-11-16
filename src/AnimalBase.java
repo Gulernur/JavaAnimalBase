@@ -12,9 +12,9 @@ public class AnimalBase {
     public void start() {
         UserInterface ui = new UserInterface(this);
 
-       /* createNewAnimal("Abelone", "large", "elephant", 7);
+       createNewAnimal("Abelone", "large", "elephant", 7);
         createNewAnimal("Pug", "fat", "dog", 4);
-        createNewAnimal("Mandu", "amazin", "cat", 2);*/
+        createNewAnimal("Mandu", "amazin", "cat", 2);
 
         ui.start();
     }
@@ -27,18 +27,22 @@ public class AnimalBase {
     public Iterable<Animal> getAllAnimals() {
         return animals;
     }
+    private SuperFlexibleComperator comperator = new SuperFlexibleComperator("name", "ASC");
 
-    public void sortBy(String sort) {
+    public void sortBy(String sort, String direction) {
         // TODO: Implement better sorting!
         System.out.println("Sorting the list of animals");
+        comperator.setType(sort);
+        comperator.setDirection(direction);
+        Collections.sort(animals, comperator);
 
-        if(sort.equalsIgnoreCase("name")){
-            Collections.sort(animals, new NameComperator());
+        /*if(sort.equalsIgnoreCase("name")){
+            Collections.sort(animals, new SuperFlexibleComperator("name", direction));
         } else if (sort.equalsIgnoreCase("type")){
-            Collections.sort(animals, new TypeComperator());
+            Collections.sort(animals, new SuperFlexibleComperator("type", direction));
         } else if(sort.equalsIgnoreCase("age")){
-            Collections.sort(animals, new AgeComperator());
-        }
+            Collections.sort(animals, new SuperFlexibleComperator("age", direction));
+        }*/
     }
 
     public void createNewAnimal(String name, String description, String type, int age) {
