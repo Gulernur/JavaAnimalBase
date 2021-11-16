@@ -29,9 +29,16 @@ public class AnimalBase {
     }
 
     public void sortBy(String sort) {
-        // TODO: Implement sorting!
-        System.out.println("TODO: Sort the list of animals by: " + sort);
-        Collections.sort(animals);
+        // TODO: Implement better sorting!
+        System.out.println("Sorting the list of animals");
+
+        if(sort.equalsIgnoreCase("name")){
+            Collections.sort(animals, new NameComperator());
+        } else if (sort.equalsIgnoreCase("type")){
+            Collections.sort(animals, new TypeComperator());
+        } else if(sort.equalsIgnoreCase("age")){
+            Collections.sort(animals, new AgeComperator());
+        }
     }
 
     public void createNewAnimal(String name, String description, String type, int age) {

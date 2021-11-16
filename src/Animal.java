@@ -15,6 +15,18 @@ public class Animal implements Comparable<Animal>{
         return name;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public String getType() {
+        return type;
+    }
+
     @Override
     public String toString() {
         return name + " the " + desc + " " + type + ", age " + age;
